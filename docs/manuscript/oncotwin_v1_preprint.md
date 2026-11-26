@@ -1,7 +1,7 @@
 # Empirical Evaluation of Budget-Constrained Ex Vivo Drug Panel Selection and Patient-Level Conformal Shortlists in Primary Acute Myeloid Leukemia
 
 **Author:** Muhammed Emin Çelik¹*  
-¹ Independent Researcher *(ORCID: [add after registration at https://orcid.org])*  
+¹ Independent Researcher · ORCID: https://orcid.org/0009-0003-9804-0640  
 \* Correspondence / Code: https://github.com/Zwannfrederick/oncotwin  
 **Article Type:** New Results (Empirical Computational Study — Research Use Only)  
 **License (Manuscript):** CC BY-NC 4.0 · **License (Code):** PolyForm Noncommercial 1.0.0  

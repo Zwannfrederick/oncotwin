@@ -9,7 +9,7 @@ repository-code: "https://github.com/Zwannfrederick/oncotwin"
 authors:
   - family-names: "Çelik"
     given-names: "Muhammed Emin"
-    # orcid: "https://orcid.org/0000-0000-0000-0000"  # Add your ORCID iD after registration
+    orcid: "https://orcid.org/0009-0003-9804-0640"
 keywords:
   - acute-myeloid-leukemia
   - ex-vivo-drug-sensitivity
