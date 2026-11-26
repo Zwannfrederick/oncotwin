@@ -1,0 +1,266 @@
+{
+  "archive_json_identical": true,
+  "independent_ci": {
+    "k2/k_probe_minus_train_reference/ndcg_at_3": {
+      "sol": [
+        -0.0159,
+        -0.0306,
+        -0.0021
+      ],
+      "opus": [
+        -0.0159,
+        -0.0307,
+        -0.0016
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k2/k_probe_minus_train_reference/regret_at_1_auc": {
+      "sol": [
+        4.7947,
+        -1.1914,
+        11.5677
+      ],
+      "opus": [
+        4.7947,
+        -1.1295,
+        11.6108
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k2/k_center_minus_train_reference/ndcg_at_3": {
+      "sol": [
+        -0.0107,
+        -0.024,
+        0.0019
+      ],
+      "opus": [
+        -0.0107,
+        -0.024,
+        0.0019
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k2/k_center_minus_train_reference/regret_at_1_auc": {
+      "sol": [
+        8.9631,
+        2.0698,
+        17.0323
+      ],
+      "opus": [
+        8.9631,
+        1.8786,
+        17.2969
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k2/k_probe_minus_k_center/ndcg_at_3": {
+      "sol": [
+        -0.0052,
+        -0.0143,
+        0.0045
+      ],
+      "opus": [
+        -0.0052,
+        -0.0145,
+        0.0043
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k2/k_probe_minus_k_center/regret_at_1_auc": {
+      "sol": [
+        -4.1684,
+        -11.0346,
+        1.9042
+      ],
+      "opus": [
+        -4.1684,
+        -11.0071,
+        1.881
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k2/k_probe_minus_M1_k0/ndcg_at_3": {
+      "sol": [
+        0.0129,
+        -0.0038,
+        0.0295
+      ],
+      "opus": [
+        0.0129,
+        -0.0036,
+        0.0295
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k2/k_probe_minus_M1_k0/regret_at_1_auc": {
+      "sol": [
+        -3.5062,
+        -10.2043,
+        2.8295
+      ],
+      "opus": [
+        -3.5062,
+        -10.4151,
+        3.0268
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k2/k_probe_minus_full_row_oracle/ndcg_at_3": {
+      "sol": [
+        -0.0178,
+        -0.0321,
+        -0.0046
+      ],
+      "opus": [
+        -0.0178,
+        -0.0314,
+        -0.0046
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k2/k_probe_minus_full_row_oracle/regret_at_1_auc": {
+      "sol": [
+        1.7531,
+        -4.3006,
+        8.6269
+      ],
+      "opus": [
+        1.7531,
+        -4.1389,
+        8.2615
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k5/k_probe_minus_train_reference/ndcg_at_3": {
+      "sol": [
+        -0.0098,
+        -0.0209,
+        0.0008
+      ],
+      "opus": [
+        -0.0098,
+        -0.0213,
+        0.0008
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k5/k_probe_minus_train_reference/regret_at_1_auc": {
+      "sol": [
+        1.6136,
+        -3.6244,
+        7.731
+      ],
+      "opus": [
+        1.6136,
+        -3.6378,
+        7.8001
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k5/k_center_minus_train_reference/ndcg_at_3": {
+      "sol": [
+        -0.0032,
+        -0.0113,
+        0.005
+      ],
+      "opus": [
+        -0.0032,
+        -0.0113,
+        0.0048
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k5/k_center_minus_train_reference/regret_at_1_auc": {
+      "sol": [
+        -2.2075,
+        -7.0431,
+        1.8234
+      ],
+      "opus": [
+        -2.2075,
+        -6.8832,
+        1.792
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k5/k_probe_minus_k_center/ndcg_at_3": {
+      "sol": [
+        -0.0066,
+        -0.0168,
+        0.0025
+      ],
+      "opus": [
+        -0.0066,
+        -0.0164,
+        0.0025
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k5/k_probe_minus_k_center/regret_at_1_auc": {
+      "sol": [
+        3.8211,
+        -1.3926,
+        10.3522
+      ],
+      "opus": [
+        3.8211,
+        -1.3863,
+        10.407
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k5/k_probe_minus_M1_k0/ndcg_at_3": {
+      "sol": [
+        0.034,
+        0.0144,
+        0.0554
+      ],
+      "opus": [
+        0.034,
+        0.0148,
+        0.0549
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k5/k_probe_minus_M1_k0/regret_at_1_auc": {
+      "sol": [
+        -6.9099,
+        -14.8757,
+        0.2075
+      ],
+      "opus": [
+        -6.9099,
+        -14.3412,
+        -0.0479
+      ],
+      "same_sign_of_ci_vs_zero": false
+    },
+    "k5/k_probe_minus_full_row_oracle/ndcg_at_3": {
+      "sol": [
+        -0.0054,
+        -0.0195,
+        0.0072
+      ],
+      "opus": [
+        -0.0054,
+        -0.0192,
+        0.0071
+      ],
+      "same_sign_of_ci_vs_zero": true
+    },
+    "k5/k_probe_minus_full_row_oracle/regret_at_1_auc": {
+      "sol": [
+        2.2306,
+        -3.5396,
+        8.8607
+      ],
+      "opus": [
+        2.2306,
+        -3.453,
+        8.7668
+      ],
+      "same_sign_of_ci_vs_zero": true
+    }
+  },
+  "n_captured": 20
+}

@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oncotwin"
+version = "1.0.0"
+description = "Budget-constrained ex vivo drug panel selection and patient-level conformal shortlists in primary AML (Research Use Only; non-commercial)."
+readme = "README.md"
+license = "PolyForm-Noncommercial-1.0.0"
+authors = [
+    { name = "Muhammed Emin Çelik" },
+]
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "openpyxl>=3.1",
+]
+
+[project.urls]
+Repository = "https://github.com/Zwannfrederick/oncotwin"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]

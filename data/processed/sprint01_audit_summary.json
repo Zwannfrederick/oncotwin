@@ -1,0 +1,922 @@
+{
+  "leakage_and_units": {
+    "n_specimens": 942,
+    "n_unique_specimen_keys": 942,
+    "n_patients": 805,
+    "specimens_per_patient": {
+      "exactly_1": 697,
+      "exactly_2": 84,
+      "3_or_more": 24,
+      "max": 5,
+      "patients_with_multiple_specimens": 108,
+      "specimens_from_multi_specimen_patients": 245
+    },
+    "cohort_specimens": {
+      "Waves1+2": 649,
+      "Waves3+4": 270,
+      "Both": 23
+    },
+    "cohort_patients": {
+      "Both": 23,
+      "Waves1+2": 543,
+      "Waves3+4": 257
+    },
+    "cross_wave_patient_overlap": {
+      "waves12_and_waves34": 13,
+      "both_and_waves12": 4,
+      "both_and_waves34": 1,
+      "total_patients_in_multiple_cohort_labels": 18
+    }
+  },
+  "modality_overlap": {
+    "clinical_specimens": 942,
+    "clinical_patients": 805,
+    "smap_total_rows": 979,
+    "smap_healthy_controls": 37,
+    "norm_exp_total_columns": 707,
+    "norm_exp_patient_columns": 671,
+    "norm_exp_healthy_control_columns": 36,
+    "probit_specimens": 631,
+    "probit_orphan_specimens_not_in_clin": 0,
+    "drug_and_norm_exp_specimens": 520,
+    "drug_and_norm_exp_patients": 479,
+    "drug_and_dnaseq_col_specimens": 603,
+    "drug_and_wes_calls_specimens": 583,
+    "drug_and_norm_exp_and_dnaseq_specimens": 494,
+    "drug_and_norm_exp_and_dnaseq_patients": 458,
+    "smap_patient_keys_missing_from_clin": 0
+  },
+  "wave_drug_rnaseq_overlap": {
+    "Waves1+2": {
+      "specimens": 314,
+      "patients": 290
+    },
+    "Waves3+4": {
+      "specimens": 183,
+      "patients": 174
+    },
+    "Both": {
+      "specimens": 23,
+      "patients": 23
+    }
+  },
+  "probit_quality": {
+    "total_rows": 63395,
+    "duplicate_specimen_inhibitor_rows": 0,
+    "unique_inhibitors": 166,
+    "status_row_counts": {
+      "train/test": 51010,
+      "combined": 9363,
+      "exploratory": 3022
+    },
+    "status_inhibitor_counts": {
+      "combined": 28,
+      "exploratory": 43,
+      "train/test": 95
+    },
+    "converged_true_rate": 0.9997791623945106,
+    "curve_type_counts": {
+      "decreasing": 54927,
+      "increasing": 8468
+    },
+    "ic50_censored_at_min_rate": 0.05139206562031706,
+    "ic50_censored_at_max_rate": 0.4536477640192444,
+    "ic50_total_censored_rate": 0.5050398296395615,
+    "auc_summary": {
+      "min": 2.94236785140912e-09,
+      "p05": 72.55985087287384,
+      "q25": 155.741498571964,
+      "median": 207.538741735245,
+      "mean": 196.12251765778996,
+      "q75": 246.501381776393,
+      "p95": 282.6461229655863,
+      "max": 286.327943281417,
+      "std": 64.2843553304137
+    }
+  },
+  "cross_wave_drug_counts": {
+    "w12_ge100_and_w34_ge100": 114,
+    "w12_exp_ge80_and_w34_exp_ge80": 114,
+    "by_status_ge100_both_waves": {
+      "train/test": 95,
+      "combined": 19
+    }
+  },
+  "matrix_subsets": {
+    "all_166": {
+      "n_specimens": 631,
+      "n_patients": 569,
+      "n_inhibitors": 166,
+      "n_observations": 63395,
+      "fill_rate": 0.6052259752162373,
+      "missing_rate": 0.39477402478376267,
+      "drugs_per_specimen": {
+        "min": 1,
+        "p10": 18.0,
+        "median": 114.0,
+        "p90": 121.0,
+        "max": 124
+      },
+      "specimens_per_drug": {
+        "min": 3,
+        "p10": 52.0,
+        "median": 525.0,
+        "p90": 550.0,
+        "max": 614
+      },
+      "coverage_thresholds": {
+        "ge_15_drugs": {
+          "specimens": 588,
+          "patients": 534,
+          "with_rnaseq_specimens": 493,
+          "with_rnaseq_patients": 457,
+          "waves12_with_rnaseq_patients": 284,
+          "waves34_with_rnaseq_patients": 158
+        },
+        "ge_30_drugs": {
+          "specimens": 551,
+          "patients": 507,
+          "with_rnaseq_specimens": 467,
+          "with_rnaseq_patients": 434,
+          "waves12_with_rnaseq_patients": 264,
+          "waves34_with_rnaseq_patients": 156
+        },
+        "ge_50_drugs": {
+          "specimens": 550,
+          "patients": 506,
+          "with_rnaseq_specimens": 466,
+          "with_rnaseq_patients": 433,
+          "waves12_with_rnaseq_patients": 264,
+          "waves34_with_rnaseq_patients": 155
+        },
+        "ge_80_drugs": {
+          "specimens": 545,
+          "patients": 502,
+          "with_rnaseq_specimens": 462,
+          "with_rnaseq_patients": 430,
+          "waves12_with_rnaseq_patients": 261,
+          "waves34_with_rnaseq_patients": 155
+        },
+        "ge_100_drugs": {
+          "specimens": 518,
+          "patients": 475,
+          "with_rnaseq_specimens": 438,
+          "with_rnaseq_patients": 406,
+          "waves12_with_rnaseq_patients": 246,
+          "waves34_with_rnaseq_patients": 148
+        }
+      },
+      "m0_variance_decomposition": {
+        "n_patients_or_specimens": 631,
+        "n_drugs": 166,
+        "n_observed": 63395,
+        "missing_rate": 0.39477402478376267,
+        "global_mean": 196.12251765778998,
+        "total_std": 64.28435533041369,
+        "total_var": 4132.4783402468875,
+        "drug_only": {
+          "r2": 0.41625289361790263,
+          "rmse": 49.115397517538355
+        },
+        "patient_only": {
+          "r2": 0.13420300107966243,
+          "rmse": 59.81544403487324
+        },
+        "two_way_m0": {
+          "r2": 0.5491758568101213,
+          "rmse": 43.162727056947354,
+          "residual_var": 1863.0210069925351,
+          "residual_std": 43.162727056947354,
+          "drug_effect_std": 41.03907466703443,
+          "patient_effect_std": 25.150471366262696,
+          "converged": true,
+          "n_iter": 16
+        },
+        "within_patient_ranking_r2_of_m0_vs_patient_only": 0.4792957890220646
+      }
+    },
+    "train_test_95": {
+      "n_specimens": 631,
+      "n_patients": 569,
+      "n_inhibitors": 95,
+      "n_observations": 51010,
+      "fill_rate": 0.8509467011427142,
+      "missing_rate": 0.1490532988572858,
+      "drugs_per_specimen": {
+        "min": 1,
+        "p10": 17.0,
+        "median": 93.0,
+        "p90": 95.0,
+        "max": 95
+      },
+      "specimens_per_drug": {
+        "min": 474,
+        "p10": 520.8,
+        "median": 535.0,
+        "p90": 563.8000000000001,
+        "max": 614
+      },
+      "coverage_thresholds": {
+        "ge_15_drugs": {
+          "specimens": 587,
+          "patients": 533,
+          "with_rnaseq_specimens": 492,
+          "with_rnaseq_patients": 456,
+          "waves12_with_rnaseq_patients": 283,
+          "waves34_with_rnaseq_patients": 158
+        },
+        "ge_30_drugs": {
+          "specimens": 551,
+          "patients": 507,
+          "with_rnaseq_specimens": 467,
+          "with_rnaseq_patients": 434,
+          "waves12_with_rnaseq_patients": 264,
+          "waves34_with_rnaseq_patients": 156
+        },
+        "ge_50_drugs": {
+          "specimens": 549,
+          "patients": 505,
+          "with_rnaseq_specimens": 466,
+          "with_rnaseq_patients": 433,
+          "waves12_with_rnaseq_patients": 264,
+          "waves34_with_rnaseq_patients": 155
+        },
+        "ge_80_drugs": {
+          "specimens": 524,
+          "patients": 481,
+          "with_rnaseq_specimens": 445,
+          "with_rnaseq_patients": 413,
+          "waves12_with_rnaseq_patients": 251,
+          "waves34_with_rnaseq_patients": 149
+        }
+      },
+      "m0_variance_decomposition": {
+        "n_patients_or_specimens": 631,
+        "n_drugs": 95,
+        "n_observed": 51010,
+        "missing_rate": 0.1490532988572858,
+        "global_mean": 196.5560132934715,
+        "total_std": 63.312049836684984,
+        "total_var": 4008.415654522883,
+        "drug_only": {
+          "r2": 0.40672156458899733,
+          "rmse": 48.7658340233437
+        },
+        "patient_only": {
+          "r2": 0.15305242189539658,
+          "rmse": 58.2659242665448
+        },
+        "two_way_m0": {
+          "r2": 0.5573807725882534,
+          "rmse": 42.12127538608095,
+          "residual_var": 1774.2018401500688,
+          "residual_std": 42.12127538608095,
+          "drug_effect_std": 40.43094000940727,
+          "patient_effect_std": 25.958929871272368,
+          "converged": true,
+          "n_iter": 11
+        },
+        "within_patient_ranking_r2_of_m0_vs_patient_only": 0.47739477760560967
+      }
+    },
+    "cross_wave_ge100": {
+      "n_specimens": 631,
+      "n_patients": 569,
+      "n_inhibitors": 114,
+      "n_observations": 57978,
+      "fill_rate": 0.8059888230878305,
+      "missing_rate": 0.19401117691216951,
+      "drugs_per_specimen": {
+        "min": 1,
+        "p10": 17.0,
+        "median": 105.0,
+        "p90": 114.0,
+        "max": 114
+      },
+      "specimens_per_drug": {
+        "min": 303,
+        "p10": 393.0,
+        "median": 533.0,
+        "p90": 558.1,
+        "max": 614
+      },
+      "coverage_thresholds": {
+        "ge_15_drugs": {
+          "specimens": 587,
+          "patients": 533,
+          "with_rnaseq_specimens": 492,
+          "with_rnaseq_patients": 456,
+          "waves12_with_rnaseq_patients": 283,
+          "waves34_with_rnaseq_patients": 158
+        },
+        "ge_30_drugs": {
+          "specimens": 551,
+          "patients": 507,
+          "with_rnaseq_specimens": 467,
+          "with_rnaseq_patients": 434,
+          "waves12_with_rnaseq_patients": 264,
+          "waves34_with_rnaseq_patients": 156
+        },
+        "ge_50_drugs": {
+          "specimens": 549,
+          "patients": 505,
+          "with_rnaseq_specimens": 466,
+          "with_rnaseq_patients": 433,
+          "waves12_with_rnaseq_patients": 264,
+          "waves34_with_rnaseq_patients": 155
+        },
+        "ge_80_drugs": {
+          "specimens": 529,
+          "patients": 486,
+          "with_rnaseq_specimens": 449,
+          "with_rnaseq_patients": 417,
+          "waves12_with_rnaseq_patients": 253,
+          "waves34_with_rnaseq_patients": 150
+        },
+        "ge_100_drugs": {
+          "specimens": 376,
+          "patients": 342,
+          "with_rnaseq_specimens": 330,
+          "with_rnaseq_patients": 305,
+          "waves12_with_rnaseq_patients": 165,
+          "waves34_with_rnaseq_patients": 137
+        }
+      },
+      "m0_variance_decomposition": {
+        "n_patients_or_specimens": 631,
+        "n_drugs": 114,
+        "n_observed": 57978,
+        "missing_rate": 0.19401117691216951,
+        "global_mean": 196.53227162717454,
+        "total_std": 64.12468332023577,
+        "total_var": 4111.975010920524,
+        "drug_only": {
+          "r2": 0.41311736210380157,
+          "rmse": 49.12480779985085
+        },
+        "patient_only": {
+          "r2": 0.1397130282175938,
+          "rmse": 59.47670577789043
+        },
+        "two_way_m0": {
+          "r2": 0.5499168014333804,
+          "rmse": 43.02012163326738,
+          "residual_var": 1850.73086534112,
+          "residual_std": 43.02012163326738,
+          "drug_effect_std": 41.668364135252304,
+          "patient_effect_std": 25.222583646337913,
+          "converged": true,
+          "n_iter": 11
+        },
+        "within_patient_ranking_r2_of_m0_vs_patient_only": 0.47682202180267375
+      }
+    },
+    "clinical_candidates_C": {
+      "n_specimens": 631,
+      "n_patients": 569,
+      "n_inhibitors": 24,
+      "n_observations": 10890,
+      "fill_rate": 0.7190966719492868,
+      "missing_rate": 0.28090332805071316,
+      "drugs_per_specimen": {
+        "min": 1,
+        "p10": 7.0,
+        "median": 20.0,
+        "p90": 24.0,
+        "max": 24
+      },
+      "specimens_per_drug": {
+        "min": 274,
+        "p10": 320.3,
+        "median": 477.5,
+        "p90": 573.5,
+        "max": 598
+      },
+      "coverage_thresholds": {
+        "ge_15_drugs": {
+          "specimens": 403,
+          "patients": 369,
+          "with_rnaseq_specimens": 351,
+          "with_rnaseq_patients": 326,
+          "waves12_with_rnaseq_patients": 170,
+          "waves34_with_rnaseq_patients": 152
+        }
+      },
+      "m0_variance_decomposition": {
+        "n_patients_or_specimens": 631,
+        "n_drugs": 24,
+        "n_observed": 10890,
+        "missing_rate": 0.28090332805071316,
+        "global_mean": 181.06491998804825,
+        "total_std": 66.62444405249676,
+        "total_var": 4438.816545304271,
+        "drug_only": {
+          "r2": 0.3062926318525917,
+          "rmse": 55.49089784218847
+        },
+        "patient_only": {
+          "r2": 0.16834850203165486,
+          "rmse": 60.758114100990426
+        },
+        "two_way_m0": {
+          "r2": 0.46913390646894204,
+          "rmse": 48.54294180729784,
+          "residual_var": 2356.4171993067043,
+          "residual_std": 48.54294180729784,
+          "drug_effect_std": 40.202457638124,
+          "patient_effect_std": 29.04747135550556,
+          "converged": true,
+          "n_iter": 14
+        },
+        "within_patient_ranking_r2_of_m0_vs_patient_only": 0.3616724134713647
+      }
+    }
+  },
+  "drug_families": {
+    "probit_drugs_in_drug_family": 117,
+    "probit_drugs_missing_from_drug_family": 49,
+    "probit_drugs_in_drug_gene": 117,
+    "top_families": {
+      "Type III RTKs: PDGFR, CSFR, Kit, FLT3 receptor family": 29,
+      "CMGC: Containing CDK, MAPK, GSK3, CLK families": 22,
+      "STE: Homologs of yeast Sterile 7, Sterile 11, Sterile 20 kinases": 21,
+      "Type IV RTKs: VEGF (vascular endothelial growth factor) receptor family": 17,
+      "CAMK: Calcium/calmodulin-dependent protein kinases": 17,
+      "STE20 family": 14,
+      "Abl family": 13,
+      "Type I RTKs: ErbB (epidermal growth factor) receptor family": 13,
+      "Type XIV RTKs: RET": 12,
+      "Src family": 11,
+      "AGC: Containing PKA, PKG, PKC families": 11,
+      "Cyclin-dependent kinase (CDK) family": 10
+    }
+  },
+  "clinical_candidate_drugs_C": [
+    {
+      "inhibitor": "Dasatinib",
+      "status": "train/test",
+      "total_spec": 598,
+      "w12_spec": 369,
+      "w34_spec": 210,
+      "both_spec": 19,
+      "w12_exp": 298,
+      "w34_exp": 176,
+      "mean_auc": 167.64252139918716,
+      "std_auc": 59.85996952525914
+    },
+    {
+      "inhibitor": "Sorafenib",
+      "status": "train/test",
+      "total_spec": 598,
+      "w12_spec": 373,
+      "w34_spec": 203,
+      "both_spec": 22,
+      "w12_exp": 301,
+      "w34_exp": 171,
+      "mean_auc": 187.9851611688303,
+      "std_auc": 49.50122642990567
+    },
+    {
+      "inhibitor": "Trametinib (GSK1120212)",
+      "status": "train/test",
+      "total_spec": 581,
+      "w12_spec": 347,
+      "w34_spec": 212,
+      "both_spec": 22,
+      "w12_exp": 286,
+      "w34_exp": 176,
+      "mean_auc": 130.8101547644295,
+      "std_auc": 67.27752271488386
+    },
+    {
+      "inhibitor": "Quizartinib (AC220)",
+      "status": "train/test",
+      "total_spec": 556,
+      "w12_spec": 351,
+      "w34_spec": 184,
+      "both_spec": 21,
+      "w12_exp": 281,
+      "w34_exp": 159,
+      "mean_auc": 148.82805847941827,
+      "std_auc": 51.19596763805127
+    },
+    {
+      "inhibitor": "Rapamycin",
+      "status": "train/test",
+      "total_spec": 553,
+      "w12_spec": 354,
+      "w34_spec": 177,
+      "both_spec": 22,
+      "w12_exp": 291,
+      "w34_exp": 153,
+      "mean_auc": 164.32295464565297,
+      "std_auc": 56.078837850808355
+    },
+    {
+      "inhibitor": "Bortezomib (Velcade)",
+      "status": "train/test",
+      "total_spec": 550,
+      "w12_spec": 339,
+      "w34_spec": 189,
+      "both_spec": 22,
+      "w12_exp": 281,
+      "w34_exp": 160,
+      "mean_auc": 156.4213393727403,
+      "std_auc": 57.98524346096745
+    },
+    {
+      "inhibitor": "Midostaurin",
+      "status": "train/test",
+      "total_spec": 550,
+      "w12_spec": 326,
+      "w34_spec": 205,
+      "both_spec": 19,
+      "w12_exp": 271,
+      "w34_exp": 172,
+      "mean_auc": 197.1088969004817,
+      "std_auc": 58.81832432471179
+    },
+    {
+      "inhibitor": "Ruxolitinib (INCB018424)",
+      "status": "train/test",
+      "total_spec": 550,
+      "w12_spec": 344,
+      "w34_spec": 188,
+      "both_spec": 18,
+      "w12_exp": 278,
+      "w34_exp": 153,
+      "mean_auc": 225.78171759151545,
+      "std_auc": 35.72606861296289
+    },
+    {
+      "inhibitor": "Selumetinib (AZD6244)",
+      "status": "train/test",
+      "total_spec": 538,
+      "w12_spec": 330,
+      "w34_spec": 187,
+      "both_spec": 21,
+      "w12_exp": 275,
+      "w34_exp": 160,
+      "mean_auc": 189.89913689193918,
+      "std_auc": 70.90080797072966
+    },
+    {
+      "inhibitor": "Idelalisib",
+      "status": "train/test",
+      "total_spec": 535,
+      "w12_spec": 331,
+      "w34_spec": 182,
+      "both_spec": 22,
+      "w12_exp": 270,
+      "w34_exp": 152,
+      "mean_auc": 190.27239935999668,
+      "std_auc": 47.17303178417747
+    },
+    {
+      "inhibitor": "Crenolanib",
+      "status": "train/test",
+      "total_spec": 531,
+      "w12_spec": 337,
+      "w34_spec": 176,
+      "both_spec": 18,
+      "w12_exp": 278,
+      "w34_exp": 150,
+      "mean_auc": 208.01614403408738,
+      "std_auc": 53.23735826641744
+    },
+    {
+      "inhibitor": "Ibrutinib (PCI-32765)",
+      "status": "train/test",
+      "total_spec": 525,
+      "w12_spec": 314,
+      "w34_spec": 198,
+      "both_spec": 13,
+      "w12_exp": 254,
+      "w34_exp": 171,
+      "mean_auc": 198.06792709352712,
+      "std_auc": 53.70997089291536
+    },
+    {
+      "inhibitor": "Venetoclax",
+      "status": "combined",
+      "total_spec": 430,
+      "w12_spec": 221,
+      "w34_spec": 197,
+      "both_spec": 12,
+      "w12_exp": 183,
+      "w34_exp": 172,
+      "mean_auc": 149.3514555449438,
+      "std_auc": 79.01051483550347
+    },
+    {
+      "inhibitor": "Azacytidine",
+      "status": "combined",
+      "total_spec": 422,
+      "w12_spec": 238,
+      "w34_spec": 173,
+      "both_spec": 11,
+      "w12_exp": 199,
+      "w34_exp": 157,
+      "mean_auc": 231.5993589102837,
+      "std_auc": 46.054230568906775
+    },
+    {
+      "inhibitor": "Volasertib (BI-6727)",
+      "status": "combined",
+      "total_spec": 400,
+      "w12_spec": 216,
+      "w34_spec": 173,
+      "both_spec": 11,
+      "w12_exp": 181,
+      "w34_exp": 157,
+      "mean_auc": 157.9486919869615,
+      "std_auc": 42.873417099631695
+    },
+    {
+      "inhibitor": "Cytarabine",
+      "status": "combined",
+      "total_spec": 375,
+      "w12_spec": 194,
+      "w34_spec": 170,
+      "both_spec": 11,
+      "w12_exp": 163,
+      "w34_exp": 155,
+      "mean_auc": 188.8363189651427,
+      "std_auc": 52.882247826830806
+    },
+    {
+      "inhibitor": "Entospletinib (GS-9973)",
+      "status": "combined",
+      "total_spec": 357,
+      "w12_spec": 179,
+      "w34_spec": 168,
+      "both_spec": 10,
+      "w12_exp": 149,
+      "w34_exp": 154,
+      "mean_auc": 178.7360533015297,
+      "std_auc": 51.811373211170874
+    },
+    {
+      "inhibitor": "AGI-5198",
+      "status": "combined",
+      "total_spec": 341,
+      "w12_spec": 213,
+      "w34_spec": 117,
+      "both_spec": 11,
+      "w12_exp": 178,
+      "w34_exp": 110,
+      "mean_auc": 240.96327646930425,
+      "std_auc": 38.80233836363121
+    },
+    {
+      "inhibitor": "AGI-6780",
+      "status": "combined",
+      "total_spec": 339,
+      "w12_spec": 213,
+      "w34_spec": 115,
+      "both_spec": 11,
+      "w12_exp": 179,
+      "w34_exp": 107,
+      "mean_auc": 233.5950734027784,
+      "std_auc": 44.08668626938539
+    },
+    {
+      "inhibitor": "Palbociclib",
+      "status": "combined",
+      "total_spec": 338,
+      "w12_spec": 154,
+      "w34_spec": 173,
+      "both_spec": 11,
+      "w12_exp": 128,
+      "w34_exp": 156,
+      "mean_auc": 227.85825125004231,
+      "std_auc": 44.693237742820806
+    },
+    {
+      "inhibitor": "Panobinostat",
+      "status": "combined",
+      "total_spec": 328,
+      "w12_spec": 151,
+      "w34_spec": 166,
+      "both_spec": 11,
+      "w12_exp": 125,
+      "w34_exp": 150,
+      "mean_auc": 93.90318956624557,
+      "std_auc": 74.82469165377032
+    },
+    {
+      "inhibitor": "Gilteritinib",
+      "status": "combined",
+      "total_spec": 317,
+      "w12_spec": 136,
+      "w34_spec": 170,
+      "both_spec": 11,
+      "w12_exp": 112,
+      "w34_exp": 155,
+      "mean_auc": 136.86194774598954,
+      "std_auc": 61.35587187084075
+    },
+    {
+      "inhibitor": "Lenalidomide",
+      "status": "combined",
+      "total_spec": 304,
+      "w12_spec": 121,
+      "w34_spec": 172,
+      "both_spec": 11,
+      "w12_exp": 97,
+      "w34_exp": 157,
+      "mean_auc": 235.43585687795874,
+      "std_auc": 54.962515677260676
+    },
+    {
+      "inhibitor": "Selinexor",
+      "status": "combined",
+      "total_spec": 274,
+      "w12_spec": 94,
+      "w34_spec": 172,
+      "both_spec": 8,
+      "w12_exp": 76,
+      "w34_exp": 157,
+      "mean_auc": 104.37025196768404,
+      "std_auc": 50.049028417213684
+    }
+  ],
+  "driver_mutation_frequencies_in_drug_rna": [
+    {
+      "gene": "FLT3",
+      "wes_specimens_mutated": 56,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.11336032388663968,
+      "wes_patients_mutated": 47,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.10262008733624454
+    },
+    {
+      "gene": "NPM1",
+      "wes_specimens_mutated": 120,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.242914979757085,
+      "wes_patients_mutated": 108,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.23580786026200873
+    },
+    {
+      "gene": "DNMT3A",
+      "wes_specimens_mutated": 107,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.2165991902834008,
+      "wes_patients_mutated": 98,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.21397379912663755
+    },
+    {
+      "gene": "TET2",
+      "wes_specimens_mutated": 73,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.14777327935222673,
+      "wes_patients_mutated": 69,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.15065502183406113
+    },
+    {
+      "gene": "IDH2",
+      "wes_specimens_mutated": 57,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.11538461538461539,
+      "wes_patients_mutated": 55,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.12008733624454149
+    },
+    {
+      "gene": "IDH1",
+      "wes_specimens_mutated": 38,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.07692307692307693,
+      "wes_patients_mutated": 34,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.07423580786026202
+    },
+    {
+      "gene": "TP53",
+      "wes_specimens_mutated": 45,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.09109311740890688,
+      "wes_patients_mutated": 41,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.08951965065502183
+    },
+    {
+      "gene": "NRAS",
+      "wes_specimens_mutated": 79,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.15991902834008098,
+      "wes_patients_mutated": 75,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.16375545851528384
+    },
+    {
+      "gene": "KRAS",
+      "wes_specimens_mutated": 28,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.05668016194331984,
+      "wes_patients_mutated": 26,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.056768558951965066
+    },
+    {
+      "gene": "RUNX1",
+      "wes_specimens_mutated": 55,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.11133603238866396,
+      "wes_patients_mutated": 49,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.10698689956331878
+    },
+    {
+      "gene": "ASXL1",
+      "wes_specimens_mutated": 50,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.10121457489878542,
+      "wes_patients_mutated": 48,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.10480349344978165
+    },
+    {
+      "gene": "SRSF2",
+      "wes_specimens_mutated": 62,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.12550607287449392,
+      "wes_patients_mutated": 60,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.13100436681222707
+    },
+    {
+      "gene": "WT1",
+      "wes_specimens_mutated": 33,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.06680161943319839,
+      "wes_patients_mutated": 30,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.06550218340611354
+    },
+    {
+      "gene": "PTPN11",
+      "wes_specimens_mutated": 24,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.048582995951417005,
+      "wes_patients_mutated": 23,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.05021834061135371
+    },
+    {
+      "gene": "CEBPA",
+      "wes_specimens_mutated": 33,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.06680161943319839,
+      "wes_patients_mutated": 31,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.06768558951965066
+    },
+    {
+      "gene": "KIT",
+      "wes_specimens_mutated": 13,
+      "wes_specimens_total": 494,
+      "wes_specimen_freq": 0.02631578947368421,
+      "wes_patients_mutated": 11,
+      "wes_patients_total": 458,
+      "wes_patient_freq": 0.024017467248908297
+    }
+  ],
+  "clinical_markers_and_diagnosis": {
+    "flt3_itd_positive_all_specimens": 219,
+    "flt3_itd_positive_all_patients": 185,
+    "flt3_itd_positive_matched_specimens": 129,
+    "flt3_itd_positive_matched_patients": 123,
+    "npm1_positive_matched_patients": 132,
+    "eln2017_all_counts": {
+      "NonInitial": 333,
+      "Adverse": 234,
+      "Favorable": 193,
+      "Intermediate": 121,
+      "NonAML": 29,
+      "FavorableOrIntermediate": 15,
+      "MissingKaryo": 10,
+      "IntermediateOrAdverse": 6,
+      "MissingMutations": 1
+    },
+    "eln2017_matched_counts": {
+      "NonInitial": 166,
+      "Favorable": 128,
+      "Adverse": 127,
+      "Intermediate": 80,
+      "NonAML": 8,
+      "FavorableOrIntermediate": 5,
+      "IntermediateOrAdverse": 3,
+      "MissingKaryo": 2,
+      "MissingMutations": 1
+    },
+    "non_aml_all_specimens": 29,
+    "non_aml_matched_specimens": 8,
+    "non_aml_matched_patients": 8
+  }
+}

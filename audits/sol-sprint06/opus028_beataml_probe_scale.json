@@ -1,0 +1,229 @@
+{
+  "status": "retrospective_sensitivity",
+  "seed": 2026,
+  "n_train": 284,
+  "n_cal_unused": 94,
+  "n_test_split": 93,
+  "n_target_eligible": 93,
+  "n_eval": 91,
+  "n_common_drugs": 102,
+  "n_targets": 23,
+  "n_train_only_probes": 62,
+  "train_reference_center_auc": 192.5950980975307,
+  "train_reference_sd_auc": 56.33373742285796,
+  "baseline": "M1_k0",
+  "test_panel_mode": "archive_available",
+  "budgets": {
+    "2": {
+      "locked_prefix": [
+        "Flavopiridol",
+        "Sunitinib"
+      ],
+      "locked_prefix_complete_among_evaluable": 83,
+      "n_probe_vectors_with_abs_values_all_one": 91,
+      "n_probe_vectors_all_zero": 0,
+      "hidden_response_perturbation_invariant": true,
+      "arms": {
+        "M1_k0": {
+          "ndcg_at_3": 0.8542452573466255,
+          "regret_at_1_auc": 25.31755022415266
+        },
+        "train_reference": {
+          "ndcg_at_3": 0.8830094107818686,
+          "regret_at_1_auc": 17.016609788033485
+        },
+        "k_center": {
+          "ndcg_at_3": 0.8723045316558736,
+          "regret_at_1_auc": 25.979707736979407
+        },
+        "k_probe": {
+          "ndcg_at_3": 0.8671256694750147,
+          "regret_at_1_auc": 21.811303428359086
+        },
+        "full_row_oracle": {
+          "ndcg_at_3": 0.8848846327905057,
+          "regret_at_1_auc": 20.058179769903436
+        }
+      },
+      "paired_diffs": {
+        "k_probe_minus_train_reference": {
+          "ndcg_at_3": {
+            "diff": -0.015883741306853882,
+            "ci_low": -0.030586562712228465,
+            "ci_high": -0.002127220186056548,
+            "n_paired": 91
+          },
+          "regret_at_1_auc": {
+            "diff": 4.794693640325601,
+            "ci_low": -1.191371492167109,
+            "ci_high": 11.567704991673827,
+            "n_paired": 91
+          }
+        },
+        "k_center_minus_train_reference": {
+          "ndcg_at_3": {
+            "diff": -0.010704879125994937,
+            "ci_low": -0.023970894627551385,
+            "ci_high": 0.0019125909890598263,
+            "n_paired": 91
+          },
+          "regret_at_1_auc": {
+            "diff": 8.963097948945922,
+            "ci_low": 2.069754780615544,
+            "ci_high": 17.032346982371863,
+            "n_paired": 91
+          }
+        },
+        "k_probe_minus_k_center": {
+          "ndcg_at_3": {
+            "diff": -0.005178862180858945,
+            "ci_low": -0.014338762272566355,
+            "ci_high": 0.0044937315821581844,
+            "n_paired": 91
+          },
+          "regret_at_1_auc": {
+            "diff": -4.168404308620321,
+            "ci_low": -11.034575144474461,
+            "ci_high": 1.9041835164404233,
+            "n_paired": 91
+          }
+        },
+        "k_probe_minus_M1_k0": {
+          "ndcg_at_3": {
+            "diff": 0.012880412128389196,
+            "ci_low": -0.0038018577043085144,
+            "ci_high": 0.029549742354924528,
+            "n_paired": 91
+          },
+          "regret_at_1_auc": {
+            "diff": -3.506246795793576,
+            "ci_low": -10.204258446004701,
+            "ci_high": 2.8295239448335687,
+            "n_paired": 91
+          }
+        },
+        "k_probe_minus_full_row_oracle": {
+          "ndcg_at_3": {
+            "diff": -0.017758963315490983,
+            "ci_low": -0.03213847686551033,
+            "ci_high": -0.004647712506220912,
+            "n_paired": 91
+          },
+          "regret_at_1_auc": {
+            "diff": 1.7531236584556495,
+            "ci_low": -4.300565184940923,
+            "ci_high": 8.626942794462792,
+            "n_paired": 91
+          }
+        }
+      }
+    },
+    "5": {
+      "locked_prefix": [
+        "Flavopiridol",
+        "Sunitinib",
+        "XAV-939",
+        "Tivozanib (AV-951)",
+        "Tozasertib (VX-680)"
+      ],
+      "locked_prefix_complete_among_evaluable": 51,
+      "n_probe_vectors_with_abs_values_all_one": 0,
+      "n_probe_vectors_all_zero": 0,
+      "hidden_response_perturbation_invariant": true,
+      "arms": {
+        "M1_k0": {
+          "ndcg_at_3": 0.8542452573466255,
+          "regret_at_1_auc": 25.31755022415266
+        },
+        "train_reference": {
+          "ndcg_at_3": 0.89804819367395,
+          "regret_at_1_auc": 16.79401709953898
+        },
+        "k_center": {
+          "ndcg_at_3": 0.894806312497428,
+          "regret_at_1_auc": 14.586469538286872
+        },
+        "k_probe": {
+          "ndcg_at_3": 0.8882235922718658,
+          "regret_at_1_auc": 18.407604082735958
+        },
+        "full_row_oracle": {
+          "ndcg_at_3": 0.8936574503267264,
+          "regret_at_1_auc": 16.17701489723623
+        }
+      },
+      "paired_diffs": {
+        "k_probe_minus_train_reference": {
+          "ndcg_at_3": {
+            "diff": -0.009824601402084188,
+            "ci_low": -0.02089542882675586,
+            "ci_high": 0.0008276119083000547,
+            "n_paired": 91
+          },
+          "regret_at_1_auc": {
+            "diff": 1.6135869831969778,
+            "ci_low": -3.6244220533579607,
+            "ci_high": 7.730983720057032,
+            "n_paired": 91
+          }
+        },
+        "k_center_minus_train_reference": {
+          "ndcg_at_3": {
+            "diff": -0.00324188117652191,
+            "ci_low": -0.011262582747428796,
+            "ci_high": 0.005043354208255709,
+            "n_paired": 91
+          },
+          "regret_at_1_auc": {
+            "diff": -2.207547561252108,
+            "ci_low": -7.043053838196554,
+            "ci_high": 1.8233945760016084,
+            "n_paired": 91
+          }
+        },
+        "k_probe_minus_k_center": {
+          "ndcg_at_3": {
+            "diff": -0.006582720225562277,
+            "ci_low": -0.016784010271084622,
+            "ci_high": 0.0024973491270449235,
+            "n_paired": 91
+          },
+          "regret_at_1_auc": {
+            "diff": 3.8211345444490856,
+            "ci_low": -1.3926465207402845,
+            "ci_high": 10.352153316874585,
+            "n_paired": 91
+          }
+        },
+        "k_probe_minus_M1_k0": {
+          "ndcg_at_3": {
+            "diff": 0.03397833492524027,
+            "ci_low": 0.014357034143976866,
+            "ci_high": 0.055385627209369466,
+            "n_paired": 91
+          },
+          "regret_at_1_auc": {
+            "diff": -6.909946141416704,
+            "ci_low": -14.87565491375631,
+            "ci_high": 0.20754845075938197,
+            "n_paired": 91
+          }
+        },
+        "k_probe_minus_full_row_oracle": {
+          "ndcg_at_3": {
+            "diff": -0.00543385805486063,
+            "ci_low": -0.019536228355025703,
+            "ci_high": 0.0071627407802871725,
+            "n_paired": 91
+          },
+          "regret_at_1_auc": {
+            "diff": 2.2305891854997277,
+            "ci_low": -3.539570465669681,
+            "ci_high": 8.860700228230375,
+            "n_paired": 91
+          }
+        }
+      }
+    }
+  }
+}

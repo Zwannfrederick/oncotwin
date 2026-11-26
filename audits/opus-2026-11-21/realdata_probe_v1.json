@@ -1,0 +1,128 @@
+{
+  "version": "opus-probe-v1",
+  "rows": 471,
+  "unique_subjects": 471,
+  "all_specimen_rows": 512,
+  "w34_test_obs_counts": {
+    "ABT-737": 3,
+    "XAV-939": 0,
+    "Sunitinib": 153,
+    "Bay 11-7085": 135
+  },
+  "cv_seed42_k5_staticdopt": {
+    "M1": 49.25916104663242,
+    "M3_full": 43.48942625077836,
+    "perm_within": 48.65938418635574,
+    "offset_only_lam50": 46.42167264328586,
+    "offset_only_lam200": 46.48569003819944,
+    "offset_only_lam500": 46.6126693793715,
+    "offset_only_lam1500": 46.9871805341592,
+    "offset_only_lam5000": 47.769180988446664,
+    "offset_only_oracle_best": 46.42167264328586,
+    "offset_share_of_M3_gain(oracle)": 0.4917883583462944,
+    "perm_within_retained_gain": 0.1039522407005021,
+    "adaptive_unique_panels_real_mask": [
+      37,
+      43,
+      55,
+      30,
+      43
+    ],
+    "adaptive_unique_panels_full_avail": [
+      31,
+      41,
+      49,
+      22,
+      31
+    ],
+    "n_eval": [
+      83,
+      87,
+      88,
+      87,
+      82
+    ],
+    "median_test_over_oof_resid_var": [
+      1.229,
+      0.748,
+      0.82,
+      1.132,
+      0.792
+    ],
+    "s_b2_over_mean_diag": [
+      0.165,
+      0.178,
+      0.17,
+      0.129,
+      0.17
+    ]
+  },
+  "wave_k5_staticdopt": {
+    "M1": 55.66268362685078,
+    "M3_full": 50.813303631249134,
+    "perm_within": 55.85844027120758,
+    "offset_only_lam50": 53.463321944240725,
+    "offset_only_lam200": 53.466364499134805,
+    "offset_only_lam500": 53.49701518216242,
+    "offset_only_lam1500": 53.68108948670607,
+    "offset_only_lam5000": 54.253507870609006,
+    "offset_only_oracle_best": 53.463321944240725,
+    "offset_share_of_M3_gain(oracle)": 0.45353461362171243,
+    "perm_within_retained_gain": -0.04036735511227175,
+    "adaptive_unique_panels_real_mask": [
+      49
+    ],
+    "adaptive_unique_panels_full_avail": [
+      44
+    ],
+    "n_eval": [
+      146
+    ],
+    "median_test_over_oof_resid_var": [
+      1.411
+    ],
+    "s_b2_over_mean_diag": [
+      0.201
+    ]
+  },
+  "timings_s": [
+    [
+      "load",
+      2.86
+    ],
+    [
+      "fit_split",
+      9.08
+    ],
+    [
+      "fit_split",
+      9.11
+    ],
+    [
+      "fit_split",
+      8.86
+    ],
+    [
+      "fit_split",
+      8.9
+    ],
+    [
+      "fit_split",
+      9.16
+    ],
+    [
+      "fit_split",
+      5.67
+    ]
+  ],
+  "peak_rss_mb_after_load": 276.7,
+  "peak_rss_mb_end": 462.9,
+  "X_rna_shape_dtype": [
+    [
+      512,
+      22843
+    ],
+    "float32"
+  ],
+  "total_s": 55.0
+}

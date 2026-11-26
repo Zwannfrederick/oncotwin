@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+title: "OncoTwin v1: Budget-Constrained Ex Vivo Drug Panel Selection and Patient-Level Conformal Shortlists in Primary AML"
+message: "Free for science, non-commercial research only (Research Use Only; not for clinical use). If you use this code or report, please cite this repository along with Beat AML 2.0 (Bottomly et al., Cancer Cell 2022) and FIMM/Malani AML (Malani et al., Cancer Discovery 2022; Zenodo 7370747)."
+type: software
+version: "1.0.0"
+date-released: "2026-11-26"
+license: "PolyForm-Noncommercial-1.0.0"
+repository-code: "https://github.com/Zwannfrederick/oncotwin"
+authors:
+  - family-names: "Çelik"
+    given-names: "Muhammed Emin"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"  # Add your ORCID iD after registration
+keywords:
+  - acute-myeloid-leukemia
+  - ex-vivo-drug-sensitivity
+  - optimal-experimental-design
+  - conformal-prediction
+  - Beat-AML
+  - FIMM
+references:
+  - type: article
+    title: "Integrative analysis of drug response and clinical outcome in acute myeloid leukemia"
+    authors:
+      - family-names: "Bottomly"
+        given-names: "Daniel"
+    journal: "Cancer Cell"
+    year: 2022
+    doi: "10.1016/j.ccell.2022.07.002"
+  - type: article
+    title: "Implementing a Functional Precision Medicine Tumor Board for Acute Myeloid Leukemia"
+    authors:
+      - family-names: "Malani"
+        given-names: "Disha"
+    journal: "Cancer Discovery"
+    year: 2022
+    doi: "10.1158/2159-8290.CD-21-0410"
+  - type: dataset
+    title: "Functional Precision Medicine Tumor Board AML"
+    doi: "10.5281/zenodo.7370747"
+    year: 2022

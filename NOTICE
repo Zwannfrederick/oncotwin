@@ -1,0 +1,14 @@
+Required Notice: Copyright (c) 2026 Muhammed Emin Çelik (https://github.com/Zwannfrederick/oncotwin)
+
+Software Licensing:
+The source code in this repository is licensed under the PolyForm Noncommercial License 1.0.0 (see LICENSE). Non-commercial scientific and academic research use is permitted; commercial use is prohibited.
+
+Documentation, Reports, and Figures Licensing:
+All written reports, protocols, manuscript drafts, and figures in docs/ are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0, https://creativecommons.org/licenses/by-nc/4.0/).
+
+External Datasets (Not Redistributed Here):
+- Beat AML 2.0 (Bottomly et al., Cancer Cell 2022): CC BY 4.0 (https://github.com/biodev/beataml2.0_data)
+- FIMM / Malani AML (Malani et al., Cancer Discovery 2022): CC BY 4.0 (https://zenodo.org/records/7370747)
+
+Non-Clinical Research Notice:
+OncoTwin is strictly for computational and scientific research (Research Use Only). It must not be used for clinical diagnosis, treatment selection, or patient care.

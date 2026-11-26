@@ -1,0 +1,221 @@
+{
+  "cv_5fold_3seeds": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "alpha": 0.05,
+    "n_tests": 9,
+    "tests": [
+      {
+        "k": 3,
+        "metric": "rmse_diff",
+        "diff": 0.4668790965562266,
+        "ci_low": -0.14855530102405687,
+        "ci_high": 1.067519563030144,
+        "p_raw": 0.1327867213278672,
+        "p_holm": 0.7967203279672033,
+        "significant": false,
+        "favors": "StaticDOpt"
+      },
+      {
+        "k": 3,
+        "metric": "ndcg3_diff",
+        "diff": -0.0011272001074534854,
+        "ci_low": -0.005880369413729591,
+        "ci_high": 0.0036221964764070413,
+        "p_raw": 0.6601339866013398,
+        "p_holm": 1.0,
+        "significant": false,
+        "favors": "StaticDOpt"
+      },
+      {
+        "k": 3,
+        "metric": "regret1_diff",
+        "diff": -0.5723788298940846,
+        "ci_low": -2.3074577288106646,
+        "ci_high": 1.258694670712691,
+        "p_raw": 0.5093490650934906,
+        "p_holm": 1.0,
+        "significant": false,
+        "favors": "AdaptiveOED"
+      },
+      {
+        "k": 5,
+        "metric": "rmse_diff",
+        "diff": 0.2406141336882186,
+        "ci_low": -0.3264495618254081,
+        "ci_high": 0.8007286031320341,
+        "p_raw": 0.39576042395760425,
+        "p_holm": 1.0,
+        "significant": false,
+        "favors": "StaticDOpt"
+      },
+      {
+        "k": 5,
+        "metric": "ndcg3_diff",
+        "diff": 0.005937073349581268,
+        "ci_low": 0.0007004751675355026,
+        "ci_high": 0.011345477484630972,
+        "p_raw": 0.025797420257974202,
+        "p_holm": 0.20637936206379362,
+        "significant": false,
+        "favors": "AdaptiveOED"
+      },
+      {
+        "k": 5,
+        "metric": "regret1_diff",
+        "diff": -2.1383234110435474,
+        "ci_low": -4.352155928826025,
+        "ci_high": 0.05753729904559765,
+        "p_raw": 0.0565943405659434,
+        "p_holm": 0.3961603839616038,
+        "significant": false,
+        "favors": "AdaptiveOED"
+      },
+      {
+        "k": 8,
+        "metric": "rmse_diff",
+        "diff": 0.2530637947909611,
+        "ci_low": -0.20683845317806265,
+        "ci_high": 0.7367375225110718,
+        "p_raw": 0.287971202879712,
+        "p_holm": 1.0,
+        "significant": false,
+        "favors": "StaticDOpt"
+      },
+      {
+        "k": 8,
+        "metric": "ndcg3_diff",
+        "diff": 0.00637424425842581,
+        "ci_low": 0.0013796392989302464,
+        "ci_high": 0.011616183779971583,
+        "p_raw": 0.012398760123987601,
+        "p_holm": 0.11158884111588842,
+        "significant": false,
+        "favors": "AdaptiveOED"
+      },
+      {
+        "k": 8,
+        "metric": "regret1_diff",
+        "diff": -1.1265923222515717,
+        "ci_low": -3.2678161402668198,
+        "ci_high": 0.9540983493582079,
+        "p_raw": 0.3003699630036996,
+        "p_holm": 1.0,
+        "significant": false,
+        "favors": "AdaptiveOED"
+      }
+    ],
+    "note": "Keşifsel (Sprint 3 sonrası tanımlandı); pratik eşdeğerlik iddiası içermez."
+  },
+  "wave_ood": {
+    "label": "INSUFFICIENT_EVIDENCE",
+    "alpha": 0.05,
+    "n_tests": 9,
+    "tests": [
+      {
+        "k": 3,
+        "metric": "rmse_diff",
+        "diff": 1.1159276865426335,
+        "ci_low": -0.2342924761809314,
+        "ci_high": 2.5330656243372194,
+        "p_raw": 0.11018898110188981,
+        "p_holm": 0.7713228677132287,
+        "significant": false,
+        "favors": "StaticDOpt"
+      },
+      {
+        "k": 3,
+        "metric": "ndcg3_diff",
+        "diff": -0.005750797018534759,
+        "ci_low": -0.019468017547621674,
+        "ci_high": 0.007714545778706218,
+        "p_raw": 0.404959504049595,
+        "p_holm": 1.0,
+        "significant": false,
+        "favors": "StaticDOpt"
+      },
+      {
+        "k": 3,
+        "metric": "regret1_diff",
+        "diff": -2.9791183258315215,
+        "ci_low": -9.44358355367148,
+        "ci_high": 3.3434884974232593,
+        "p_raw": 0.36236376362363765,
+        "p_holm": 1.0,
+        "significant": false,
+        "favors": "AdaptiveOED"
+      },
+      {
+        "k": 5,
+        "metric": "rmse_diff",
+        "diff": 0.4873754008029465,
+        "ci_low": -0.6679513672706724,
+        "ci_high": 1.684980363448392,
+        "p_raw": 0.41675832416758324,
+        "p_holm": 1.0,
+        "significant": false,
+        "favors": "StaticDOpt"
+      },
+      {
+        "k": 5,
+        "metric": "ndcg3_diff",
+        "diff": -0.012075469150165441,
+        "ci_low": -0.0253359737757232,
+        "ci_high": 0.0008345214147871406,
+        "p_raw": 0.065993400659934,
+        "p_holm": 0.5489451054894511,
+        "significant": false,
+        "favors": "StaticDOpt"
+      },
+      {
+        "k": 5,
+        "metric": "regret1_diff",
+        "diff": 0.6721724130719764,
+        "ci_low": -6.539544673205455,
+        "ci_high": 7.303202159517977,
+        "p_raw": 0.8545145485451455,
+        "p_holm": 1.0,
+        "significant": false,
+        "favors": "StaticDOpt"
+      },
+      {
+        "k": 8,
+        "metric": "rmse_diff",
+        "diff": -0.9429380294529324,
+        "ci_low": -2.887213702877092,
+        "ci_high": 0.6481269205546817,
+        "p_raw": 0.3217678232176782,
+        "p_holm": 1.0,
+        "significant": false,
+        "favors": "AdaptiveOED"
+      },
+      {
+        "k": 8,
+        "metric": "ndcg3_diff",
+        "diff": -0.01053111122904582,
+        "ci_low": -0.021905294560696443,
+        "ci_high": 0.00039180991723684785,
+        "p_raw": 0.060993900609939006,
+        "p_holm": 0.5489451054894511,
+        "significant": false,
+        "favors": "StaticDOpt"
+      },
+      {
+        "k": 8,
+        "metric": "regret1_diff",
+        "diff": 4.477641655843389,
+        "ci_low": -2.358069646131353,
+        "ci_high": 11.853353525239491,
+        "p_raw": 0.21137886211378862,
+        "p_holm": 1.0,
+        "significant": false,
+        "favors": "StaticDOpt"
+      }
+    ],
+    "note": "Keşifsel (Sprint 3 sonrası tanımlandı); pratik eşdeğerlik iddiası içermez."
+  },
+  "n_boot": 10000,
+  "regime_roles": {
+    "cv_5fold_3seeds": "birincil aile (keşifsel)",
+    "wave_ood": "keşifsel stres testi"
+  }
+}
