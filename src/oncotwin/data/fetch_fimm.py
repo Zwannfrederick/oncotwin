@@ -5,6 +5,8 @@ from __future__ import annotations
 import argparse
 import hashlib
 import shutil
+import time
+import urllib.error
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -27,13 +29,14 @@ def md5_file(path: Path, chunk_size: int = 1024 * 1024) -> str:
     return digest.hexdigest()
 
 
-def verify_fimm_zip(zip_path: Path, expected_md5: str = FIMM_EXPECTED_MD5) -> dict[str, object]:
+def verify_fimm_zip(zip_path: Path, expected_md5: str | None = None) -> dict[str, object]:
     """ZIP bütünlüğünü ve Zenodo MD5 özetini doğrular."""
     if not zip_path.exists():
         raise FileNotFoundError(f"FIMM ZIP dosyası yok: {zip_path}")
+    exp = FIMM_EXPECTED_MD5 if expected_md5 is None else expected_md5
     actual_md5 = md5_file(zip_path)
-    if actual_md5 != expected_md5:
-        raise ValueError(f"FIMM ZIP MD5 uyuşmazlığı: beklenen={expected_md5}, gelen={actual_md5}")
+    if actual_md5 != exp:
+        raise ValueError(f"FIMM ZIP MD5 uyuşmazlığı: beklenen={exp}, gelen={actual_md5}")
     with zipfile.ZipFile(zip_path, "r") as zf:
         bad = zf.testzip()
         if bad is not None:
@@ -61,15 +64,33 @@ def extract_fimm_zip(zip_path: Path, extract_dir: Path) -> Path:
     return extract_dir
 
 
-def fetch_fimm(out_dir: Path = DEFAULT_FIMM_DIR, timeout: int = 300) -> dict[str, object]:
-    """FIMM/Malani Zenodo paketini indirir (varsa MD5 doğrular) ve çıkarır."""
+def fetch_fimm(
+    out_dir: Path = DEFAULT_FIMM_DIR,
+    timeout: int = 300,
+    max_attempts: int = 3,
+    retry_backoff_sec: float = 2.0,
+) -> dict[str, object]:
+    """FIMM/Malani Zenodo paketini indirir (geçici 5xx için en çok 3 deneme, MD5 doğrular) ve çıkarır."""
     out_dir.mkdir(parents=True, exist_ok=True)
     zip_path = out_dir / FIMM_ZIP_NAME
     if not zip_path.exists():
         tmp = zip_path.with_suffix(".zip.part")
         req = urllib.request.Request(FIMM_ZIP_URL, headers={"User-Agent": "OncoTwin-Research/1.0"})
-        with urllib.request.urlopen(req, timeout=timeout) as resp, tmp.open("wb") as fh:
-            shutil.copyfileobj(resp, fh)
+        total_attempts = max(1, int(max_attempts))
+        for attempt in range(1, total_attempts + 1):
+            try:
+                with urllib.request.urlopen(req, timeout=timeout) as resp, tmp.open("wb") as fh:
+                    shutil.copyfileobj(resp, fh)
+                break
+            except urllib.error.HTTPError as exc:
+                tmp.unlink(missing_ok=True)
+                if 500 <= exc.code < 600 and attempt < total_attempts:
+                    time.sleep(retry_backoff_sec * attempt)
+                    continue
+                raise
+            except Exception:
+                tmp.unlink(missing_ok=True)
+                raise
         try:
             verify_fimm_zip(tmp)
         except Exception:

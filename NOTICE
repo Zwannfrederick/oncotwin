@@ -1,14 +1,18 @@
 Required Notice: Copyright (c) 2026 Muhammed Emin Çelik (https://github.com/Zwannfrederick/oncotwin)
 
 Software Licensing:
-The source code in this repository is licensed under the PolyForm Noncommercial License 1.0.0 (see LICENSE). Non-commercial scientific and academic research use is permitted; commercial use is prohibited.
+All source code in this repository—including Python modules and scripts in src/, tests/, and audits/**/*.py—is licensed under the PolyForm Noncommercial License 1.0.0 (see LICENSE). Non-commercial scientific and academic research use is permitted; commercial use is prohibited.
 
-Documentation, Reports, and Figures Licensing:
-All written reports, protocols, manuscript drafts, and figures in docs/ are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0, https://creativecommons.org/licenses/by-nc/4.0/).
+Documentation, Figures, and Derived Outputs Licensing:
+All written reports, protocols, manuscript drafts, and figures in docs/, derived evaluation summaries, split manifests, and patient-level vector archives in data/processed/, and non-code audit records (JSON, Markdown, SHA-256 manifests) in audits/ are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0, https://creativecommons.org/licenses/by-nc/4.0/).
 
-External Datasets (Not Redistributed Here):
+Raw External Datasets (Not Redistributed Here — data/raw/):
+Raw Beat AML 2.0 and FIMM/Malani source files are excluded from this repository and fetched directly from their official releases with SHA-256/MD5 verification:
 - Beat AML 2.0 (Bottomly et al., Cancer Cell 2022): CC BY 4.0 (https://github.com/biodev/beataml2.0_data)
 - FIMM / Malani AML (Malani et al., Cancer Discovery 2022): CC BY 4.0 (https://zenodo.org/records/7370747)
+
+Derived Data Notice (data/processed/):
+Files under data/processed/ contain derived evaluation summaries, patient-level metric vectors, and split manifests referencing public dbGaP subject IDs and specimen keys from the CC BY 4.0 Beat AML 2.0 and FIMM/Malani cohorts above. Reuse of these derived files must preserve attribution to Beat AML 2.0 and FIMM/Malani AML in addition to this repository.
 
 Non-Clinical Research Notice:
 OncoTwin is strictly for computational and scientific research (Research Use Only). It must not be used for clinical diagnosis, treatment selection, or patient care.

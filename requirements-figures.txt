@@ -1,0 +1,4 @@
+# OncoTwin v1 — Optional deterministic figure generation dependency
+# Kept separate from requirements.txt so core runtime stays at 3 packages (numpy, pandas, openpyxl).
+# Verified on: Python 3.14.10, Linux x86_64 (2026-11-26)
+matplotlib==3.11.2

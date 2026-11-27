@@ -525,7 +525,7 @@ Hiçbiri Sprint 4 sonuçlarını değiştirmiyor. JRSS-B atfı ve AUGRC notu Sol
 | **OPUS-027** | INFO · VERIFIED | B kulvarı, sıra-konformal ve AUGRC | Kapsama olayları liste kuralına denk: `r_i≤k̂`; göreli sırada `⌈q·n⌉` (tam sayı sıra ile); `gap≤m̂`. Bağlar korumacı (en kötü sıra). `q=∞` → `hesaplanamadı`. AUGRC yamuk kuralında rastgele sıranın beklenen değeri **analitik olarak tam `0.5·ortalama`**. `EqualWidthAUC`, v2 ile iki rejimde fark 0.0 ve NaN deseni aynı. **Sol'un istediği paydalar ham dizilerden doğrulandı:** tek aday doğruluğu ID **5/9** (Wilson %26.7–81.1), W3+4 **19/25** (%56.6–88.5); Rank ID 85/91 (%86.4–96.9). W3+4 kalibrasyonunda bölme 71, arşiv uygunluğu sonrası **70** (`sprint04_v2_results.json` `archive_eval_cal=70`). Protokol §2'deki `n_cal=71` ifadesi düzeltilmeli (SOL-14). |
 | **OPUS-028** | MINOR · VERIFIED (SOL-15'i kaynakta teyit eder) | C1 eğitim ve aktarım ölçeği | [run_sprint05_fimm.py:62-92](../../src/oncotwin/experiments/run_sprint05_fimm.py#L62-L92): Beat AML yanıtları hasta başına **tüm** ölçülmüş ortak ilaçlar üzerinden z-skorlanıyor (`_within_patient_zscore_rows`), FIMM probları ise yalnız **k prob** üzerinden. k=2'de popülasyon SD'si nedeniyle değerler daima tam ±1. Bundan önemlisi, k-prob ortalamasına yeniden merkezleme **hasta ofsetini siliyor**; Sprint 3'te (OPUS-002) M3 kazancının yaklaşık yarısı bu ofsetten geliyordu. NDCG@3 ofsetten etkilenmediği için anlamlı çıkıp Regret@1'in çıkmaması bu yapıyla tutarlı. FIMM etiketi hiçbir fite girmiyor; sızıntı yok. Öneri (Neon, Sprint 6): Sol'un istediği Beat AML iç kontrolü yapılmalı; aynı k-prob ölçeklemesi Beat AML test hastalarına uygulanmalı. **⚠ Düzeltme (2026-11-26, §3.11):** "Hasta ofsetini siliyor ve Regret@1 sonucunu açıklıyor" ifadesi geri çekildi. C1 eğitiminde yanıtlar zaten hasta başına tüm-satır z-skoruyla ofsetten arındırılıyor. Gerçek fark k-prob ve tüm-satır merkez/ölçek farkı; ölçülen etki §3.11'de. |
 | **OPUS-029** | INFO · VERIFIED | Sıra normalizasyonu bağ kırma | `within_sample_rank_normalize` bağları gen sütun sırasına göre ayırıyor (ordinal). Beat AML'de satır başına değerlerin **%19.5'i bağlı** (en büyük grup 48), FIMM'de yaklaşık 0. Ölçülen etki ortalama sıraya göre ortalama 2e-5, en çok 0.0016 ([0,1] ölçeğinde); **ihmal edilebilir**, yeniden koşu gerekmez. Sonraki sürümde `metrics._rankdata_average` yeniden kullanılmalı. |
-| **OPUS-030** | INFO · VERIFIED | C1 ikincil metrikler | M3 k5 − M1: NDCG@3 **+0.032 [+0.007, +0.055]**, Recall@3 **+0.037 [+0.006, +0.067]**, hasta içi Spearman **+0.022 [−0.001, +0.045]** (sıfırı kesiyor), Regret@1 −0.23 [−1.22, +0.77]. İddia "genel sıralama" değil, **üst-3 zenginleşmesi** olarak yazılmalı (Sol §9.3 ile uyumlu). |
+| **OPUS-030** | INFO · VERIFIED | C1 ikincil metrikler | M3 k5 − M1: NDCG@3 **+0.032 [+0.007, +0.055]**, Recall@3 **+0.037 [+0.006, +0.067]**, hasta içi Spearman **+0.022 [−0.001, +0.045]** (sıfırı kesiyor), Regret@1 −0.23 [−1.22, +0.77]. **⚠ Düzeltme (2026-11-26, §3.12):** Bu aralık Opus'un denetim bootstrap'ından (tohum 7). Arşivdeki birincil sonuç **[+0.000, +0.045], p=0.048**; alt sınır +0.0004. Spearman farkı sınırda ve tohuma bağlı; "sıfırı kesiyor" ifadesi tek başına doğru değil. İddia "genel sıralama" değil, **üst-3 zenginleşmesi** olarak yazılmalı (Sol §9.3 ile uyumlu). |
 | **OPUS-031** | INFO · VERIFIED | C kulvarı veri | Bileşik eşlemesi **bire bir** (102 Beat AML → 102 ayrı FIMM kimliği, belirsiz eşleşme yok). İndeks örnek seçimi yalnız ölçüm sayısını kullanıyor, değerlere bakmıyor. 132→109 gruplama testli. MD5 testi geçiyor. |
 | **OPUS-032** | INFO · OPEN (P3) | Hijyen | `rank_conformal.py`, `uncertainty._finite_sample_conformal_quantile` private yardımcısını modül dışından import ediyor. Ad public yapılmalı. Tüm Python dosyaları 800 satırın altında (en büyük `baselines.py` 760). |
 
@@ -570,6 +570,110 @@ Sol'un ve Methods §5'in "tek bir nedene atfedilemez" sonucu doğru. Ana kol k=5
 - Açık bulgular yalnız INFO düzeyinde (OPUS-033..035) ve sürümü engellemiyor.
 
 Teknik açıdan v1 sürümüne engel yok. **Yayın kararı proje sahibine ait.**
+
+### 3.12 Makale sayı kontrolü, temiz klon ve grafik notu — `[Claude Opus 5.5]` · 2026-11-26
+
+**Kapsam:** `main` `e5a830e` (GitHub ile aynı), `docs/manuscript/oncotwin_v1_preprint.md`. Opus depoda kod, çıktı veya makale değiştirmedi. Commit ve push yapılmadı. Denetim betiği: `audits/opus-2026-11-26-manuscript/verify_manuscript_numbers.py`. Çalıştırma: `PYTHONPATH=. python3 audits/opus-2026-11-26-manuscript/verify_manuscript_numbers.py --with-fimm`.
+
+#### 1. Makale ↔ ham çıktı sayı kontrolü
+Özet, §2.1–2.2, Tablo 1–4, §3.1–3.4 ve OPUS-028 içindeki **388 sayısal iddia** tek tek kaynağına bağlandı ve makaledeki yazılış hassasiyetinde yuvarlanarak karşılaştırıldı. Kaynaklar: `data/processed/*.json`, `sprint05_vectors.npz`, `audits/sol-sprint06/*.json`. FIMM tekil/çoklu örnek sayıları, mutasyon sütunları ve önek tamlığı ham veriden; Wilson aralıkları sayımlardan yeniden hesaplandı.
+
+**Sonuç: 386 OK, 2 uyuşmazlık.** Ek olarak metinsel bir Methods hatası bulundu.
+
+| # | Önem | Yer | Sorun | Önerilen düzeltme |
+|---|---|---|---|---|
+| **M-1** | **MAJOR** | §2.1 (satır 43) | Beat AML indeks örneği "en çok gözlenen hedef ilaca sahip örnek, eşitlikte toplam ilaç sayısı ve örnek anahtarı" diye tarif ediliyor. **Kod ve PROTOCOL.md farklı:** `select_index_specimen_positions` sırasıyla toplama zamanı (en erken), hastalık evresi (önce tanı anı), DNA-seq bulunması, örnek tipi (önce kemik iliği) ve örnek anahtarına bakıyor; **ilaç etiketlerine hiç bakmıyor**. Makaledeki tarif FIMM kuralıyla karışmış (FIMM: evre, doku, eşleşen ilaç sayısı). Yazıldığı haliyle okuyucu etikete bağlı bir seçim olduğunu sanabilir. | Cümle PROTOCOL.md §Birincil Analiz Birimi ile değiştirilmeli. FIMM kuralı §2.1'in FIMM maddesinde ayrıca yazılmalı. |
+| **M-2** | MINOR | §3.4 (satır 177) | C1 Spearman için "+0.022 [−0.001, +0.045], bağımsız denetimde sıfırı kesiyor" yazıyor. Arşivdeki birincil sonuç **+0.022 [+0.000, +0.045], p=0.048** (alt sınır +0.0004). Aralık tohuma bağlı ve sınırda; makale yalnız sıfırı kesen sürümü veriyor. Opus'un §3.10'daki ifadesi de bu yüzden düzeltildi. | "Birincil: [+0.000, +0.045], p=0.048; denetim bootstrap'ında alt sınır −0.001. Sınırda, sağlam değil" diye yazılmalı. OPUS-028 Regret@1 cümlesiyle aynı biçim kullanılmalı. |
+| **M-3** | MINOR | §3.4 (satır 179) | OPUS-028 k=5, k-prob eksi tüm-satır kehanet NDCG@3 alt sınırı **−0.019** yazılmış. Arşiv JSON'u (Sol, 2000 tekrar) **−0.0195 → −0.020** veriyor. −0.019, Opus'un 4000 tekrarlı denetim değeri. Aynı cümlede iki kaynak karışmış. | Arşiv JSON'u esas alınmalı (−0.020). Denetim değeri gerekirse ayrıca etiketlenmeli. |
+| M-4 | Yazım | §2.7 (satır 86), §2.2 (satır 53) | (a) "peak RSS 599 MB", temiz venv doğrulamasına atfedilmiş. Bu ölçüm Sprint 5'in tam yeniden koşusuna ait; temiz venv doğrulaması yaklaşık 16 s sürüyor. (b) "±500 eklemek" yazıyor; testler permütasyon ve **SD=500 Gauss gürültüsü** kullanıyor. | İki ifade ayrılmalı ve gürültünün tanımı düzeltilmeli. |
+| M-5 | Bilgi | Şekil 1 başlığı | "k = 0..12" yazıyor; veri yalnız k ∈ {0, 1, 2, 3, 5, 8, 12} içeriyor. | Bütçe kümesi açıkça yazılmalı. |
+| M-6 | Kaynak (Sol'a) | §1 (satır 27) | Guillen ve ark. 2022 (Nature Cancer, PDX/organoid platformu), "PDX modelleri birincil örneklere kötü aktarılır" iddiasına kaynak gösterilmiş. Makale bu platformun hasta yanıtını yansıttığını raporluyor gibi görünüyor; iddiayı desteklemeyebilir. DOI çözümleniyor, içerik uyumu Sol'un kontrolüne bırakıldı. | Sol doğrulamalı; gerekirse kaynak değiştirilmeli ya da cümle daraltılmalı. |
+| M-7 | Bilgi | Kaynakça #14, #17 | #14 (Tibshirani 2019) DOI veya URL içermiyor. #17 (Willoch-Allen) yazar listesi eksik. | Tamamlanmalı. |
+
+Doğrulanan başlıca bloklar: Tablo 1'in 9 satırı (RMSE, NDCG, Regret ve aralıklar), Tablo 2'nin 4 satırı (p değerleri dahil), Tablo 3'ün 7 satırı (eşik, boyut, medyan, oran, tekil oran, ortalama liste Regret), Tablo 4'ün 11 satırı, C1/C2 aralıkları ve p değerleri, AURC/AUGRC, Ek 19 kabul sayıları, kohort paydaları (942/805/108/18/520/479, 252/186, 132/109 = 92+17), doz oranları (11/23, 0.01×–10×, Trametinib 40×, Rapamycin 100×), aile grafı (117/86/395, hedeflerde 15/24) ve FIMM önek tamlığı (109/98/98).
+
+#### 2. Repo, lisans ve temiz klon
+| Kontrol | Sonuç |
+|---|---|
+| Taze klon (`git clone` GitHub → scratch) | `e5a830e`, 104 dosya; yerel `git ls-files` ile **birebir aynı**. |
+| Yanlışlıkla eklenmiş dosya | Yok. `pycache`, `.venv`, ham veri, gizli anahtar, `build` veya `egg-info` takipte değil. En büyük dosya 3.5 MB (`sprint03_v2_vectors.npz`). |
+| Temiz venv + `--skip-raw` (ham veri yokken) | **PASS**, çıkış 0: manifest 32/32, değişmez 16/16. |
+| README adım 1–2: `fetch_beataml`, `fetch_fimm`, tam `--run-tests` | **PASS**, çıkış 0: Beat AML 7 dosya SHA-256, FIMM MD5, 32/32, 16/16, **88 passed** (14.8 s). `git status` temiz. |
+| Bağlantılar | Göreli markdown bağlantıları **259/259** sağlam. Makale ve CITATION DOI'leri **9/9** çözümleniyor (doi.org handle API). Dış bağlantıların 26/33'ü 200; geri kalanlar yayıncı bot engeli (403) veya PubMed cookie duvarı (203), bozuk değil. |
+| LICENSE / CITATION / NOTICE | PolyForm Noncommercial 1.0.0 metni mevcut. CITATION'da `license` alanı ve ORCID `0009-0003-9804-0640` var. NOTICE telif satırı var. |
+
+| # | Önem | Bulgu |
+|---|---|---|
+| R-1 | Bilgi | **Zenodo geçici hatası:** `fetch_fimm` üç denemenin ilk ikisinde HTTP 504 aldı ve yeniden deneme olmadığı için tek denemede akışı durduruyor. Öneri: 3 deneme ve artan bekleme (yalnız 5xx için), ya da README'ye "504 alırsanız tekrar çalıştırın" notu. |
+| R-2 | Bilgi | README ham veriyi "~330 MB" diyor. Gerçekte indirme yaklaşık 320 MB (Beat AML 281 MB + FIMM zip 39 MB), diskte ise açılmış FIMM ile **410 MB**. |
+| R-3 | Bilgi | NOTICE "harici veri setleri burada yeniden dağıtılmıyor" diyor. Ancak `data/processed/` hasta düzeyinde türetilmiş vektörler ve halka açık dbGaP hasta kimlikleri ile örnek anahtarları (bölme manifestleri) içeriyor. Kaynakların CC BY 4.0 lisansı ve verilen atıf nedeniyle izin sorunu yok. Ancak (a) "türetilmiş sonuçlar dağıtılıyor" cümlesi eklenmeli, (b) `data/processed/` için lisans belirtilmeli (şu an ne kod ne docs lisansı kapsıyor). |
+| R-4 | Not | `-W error::RuntimeWarning` ile venv Python'u **göreli yoldan** (`../venv/bin/python`) çağrılırsa Python 3.14 `site` uyarısı ölümcül olur. Depo sorunu değil; README komutları etkilenmiyor. |
+
+#### 3. Grafik üretim notu (matplotlib, deterministik, uyarısız)
+**Ortak kurallar:**
+- `matplotlib` çalışma bağımlılığı değil. Sabitlenmiş sürümle ayrı bir `requirements-figures.txt`'ye konmalı; `requirements.txt` üç pakette kalmalı.
+- `matplotlib.use("Agg")` kullanılmalı, `plt.show()` çağrılmamalı. Yerleşim için `constrained_layout=True` kullanılmalı (`tight_layout` uyarı üretebiliyor). Yazı tipi sabitlenmeli (`rcParams["font.family"]="DejaVu Sans"`).
+- Belirleyicilik için: `rcParams["svg.hashsalt"]="oncotwin-v1"`. PDF'de `savefig(..., metadata={"CreationDate": None, "Producer": None})`. PNG'de `metadata={"Software": None}`. `SOURCE_DATE_EPOCH` sabitlenmeli. Aynı sürüm ve girdiyle çıktı bayt düzeyinde aynı olmalı.
+- JSON'daki `null` (`json_sanitize` NaN'ı `None` yapıyor) çizimden önce `np.nan` yapılıp maskelenmeli. Boş dilimde `np.nanmean` çağrılmamalı; değerler JSON'daki hazır özetlerden okunmalı. Böylece `-W error::RuntimeWarning` altında uyarı çıkmaz.
+- Yalnız arşiv değerleri çizilmeli, yeniden bootstrap yapılmamalı; hata çubukları JSON'daki `ci_low`/`ci_high`'tan alınmalı.
+
+**Şekil 1 — Beat AML öğrenme eğrileri:** `sprint03_v2_results.json`
+- `{cv_5fold_3seeds|wave_ood}/metrics/k0_refs/{M0,M1}/{rmse,ndcg_at_3}`: k=0 için yatay referans çizgileri.
+- `{cv_5fold_3seeds|wave_ood}/metrics/by_k/{1,2,3,5,8,12}/{Random50,StaticDiversity,StaticDOpt,AdaptiveOED}/{rmse,ndcg_at_3,regret_at_1,n_eval}`: x ekseni bütçeler, ayrık noktalarla.
+- İsteğe bağlı aralıklar: `.../comparisons/panel/k{k}_{Policy}_vs_Random50/rmse_diff/{diff,ci_low,ci_high}` (fark paneli olarak).
+
+**Şekil 2 — Kapı 3 forest grafiği:** `sprint05_results.json` `track_a_m4/regimes/{id_cv_5fold_3seed,id_60_20_20,wave_ood_s3,wave_ood_s4}/experiment_a1_fixed_panel/k5/comparisons/{M4_vs_M3,M4_vs_M4_perm_null,M4_forced_pos_vs_M4_perm_forced}/rmse_diff/{diff,ci_low,ci_high,n_paired}`.
+- FIMM için: `track_c_fimm/experiment_c2_within_fimm_replication/comparisons/{M4_Static_k5_vs_M3_Static_k5,M4_Static_k5_vs_M4_perm_null_k5}/rmse_diff`.
+- **Dikkat:** FIMM sDSS, Beat AML ise AUC biriminde. Ayrı panel ya da ayrı x ekseni kullanılmalı; −0.50 eşiği yalnız Beat AML paneline çizilmeli. C2'de `forced` kolu yok; "koşulmadı" diye belirtilmeli.
+
+**Şekil 3 — Kısa liste ödünleşimi ve AUGRC:**
+- (A) `sprint05_results.json` `track_b_shortlist/regimes/{id_60_20_20,wave_ood}/arms/StaticDOpt_k5/methods/{EqualWidthAUC,RankConformal,RelRankConformal,Top1GapConformal}/test/{shortlist_mean_size_obs,shortlist_contains_true_top1_rate,shortlist_mean_regret1}`.
+- (A) Tekil paydalar `sprint05_vectors.npz` `track_b/{reg}/StaticDOpt_k5/Top1GapConformal/{patient_definite_top1,patient_shortlist_contains_top1}`'dan alınmalı (5/9, 19/25).
+- (B) AUGRC eğrisi `sprint04_v2_vectors.npz`'den: `{reg}/test_omics_pca_dist`, `{reg}/archive_available/StaticDOpt_k5/{m3_post_scale,patient_regret1,valid_mask}`. Eğri, `rank_conformal._trapezoid_augrc_from_arrays` ile aynı kuralla kurulmalı: skora göre artan sıralama, bağ grupları birlikte, kapsam = m/n, G = kümülatif kayıp/n.
+- (B) Özet değerler `track_b_shortlist/regimes/{reg}/augrc_sensitivity/StaticDOpt_k5/{omics_pca_dist,m3_post_scale}/{augrc,random_augrc}` ile eşleşmeli (W3+4: 14.27 / 10.57 / 12.30).
+- (B) AURC eğrisi için hazır diziler var: `sprint04_v2_results.json` `.../abstention/{score}/risk_coverage_regret1/{coverages,risks}`.
+
+**Şekil 4 — FIMM C1 ve C2:** `sprint05_results.json` `track_c_fimm/experiment_c1_frozen_transfer/cohorts/index_109_patients/`:
+- (A) `arms/{C1_M0_k0,C1_M1_rank_k0,C1_M3_Random20x_k5,C1_M3_StaticDOpt_k2,_k5,_k8}/{ndcg_at_3,regret_at_1_sdss}` ve `comparisons/{C1_M3_k5_vs_M1_k0,C1_M3_Static_k5_vs_Random_k5}/{ndcg3_diff,regret1_sdss_diff}`.
+- (B) `experiment_c2_within_fimm_replication/arms/{M0_k0,M1_k0,M2a_StaticDOpt_k5,M3_StaticDOpt_k5,M3_Random20x_k5}/{rmse,ndcg_at_3}` ve `comparisons/M3_Static_k5_vs_{M1_k0,Random20x_k5}/{rmse_diff,ndcg3_diff}`.
+- C1 ve C2 aynı eksende birleştirilmemeli (farklı deney).
+
+**Kabul kontrolü önerisi:** Grafik betiği, çizdiği her sayıyı Tablo 1–4 ile karşılaştıran bir `assert` bloğu içermeli; bu denetim betiğindeki yolları kullanabilir. İki ardışık koşuda SHA-256 eşitliği test edilmeli.
+
+#### QA kararı
+- **Repo ve temiz klon: `QA_PASS`.**
+- **Makale: `QA_CONDITIONAL`.** Yayından önce M-1 düzeltilmeli; M-2..M-4 küçük düzeltmeler.
+- Nihai karar proje sahibine aittir.
+
+### 3.13 Makale r2, figürler ve `fetch_fimm` yeniden denemesi — `[Claude Opus 5.5]` · 2026-11-26
+
+**Kapsam:** Commit edilmemiş çalışma ağacı (taban `e5a830e`): makale, README, NOTICE, `fetch_fimm.py`, `make_figures.py`, `tests/test_figures.py`, `requirements-figures.txt` ve `docs/manuscript/figures/` (12 dosya). İncelenen durum: `audits/opus-2026-11-26-manuscript/reviewed_manifest_r2.sha256`. Opus kod, makale veya figür değiştirmedi.
+
+| Kontrol | Sonuç |
+|---|---|
+| Arşiv | `release_manifest.sha256` 32/32 aynı. Sonuç dosyaları değişmemiş. |
+| Makale sayıları | `verify_manuscript_numbers.py --with-fimm`: **395/395 OK**. Yeni giren sayılar (13+4+1=18, Spearman p=0.048, OPUS-028 eğitim-referansı Regret@1 +1.61 [−3.62, +7.73], 0/146) eklendi. Ayrıca yeni metindeki tüm sayısal ifadeler arşivde tarandı; kimlik olmayan eşleşmeyen sayı yok (eşleşmeyenler yalnız ORCID, Zenodo kaydı ve bayt sayısı). |
+| §3.12 düzeltmeleri | **M-1..M-5, M-7 kapandı.** İndeks örnek kuralı kodla birebir; Spearman sınırda olarak iki aralıkla veriliyor; OPUS-028 için arşiv −0.020 esas, denetim değeri −0.019 ayrı etiketli; SD=500 Gauss gürültüsü; 599 MB Sprint 5'e bağlandı; `k ∈ {0,1,2,3,5,8,12}`; #14 URL ve #16 yazarlar eklendi. **M-6 (Guillen)** metinden çıkarıldı, içerik kararı Sol'un. FIMM C2 permütasyon sayısı (10) kodla (`range(10)`) ve Tablo 2'nin yeni "Perm Draws" sütunuyla tutarlı. |
+| **R-1 `fetch_fimm` 5xx yeniden denemesi** | Mantık doğru: yalnız 5xx'te tekrar deniyor, 4xx ve diğer hatalarda hemen hata veriyor, bekleme 2 s × deneme no ile artıyor, her başarısızlıkta `.part` siliniyor, MD5 doğrulaması sonra yapılıyor. Testler 504→504→başarı (beklemeler [0.5, 1.0]) ve 404'te tek deneme senaryolarını kapsıyor. Gerçek ortamda da, önceki klon testinde Zenodo iki kez 504 verdikten sonra 3. denemede başarı gözlendi. |
+| R-2 / R-3 | README boyutları doğru (~320 MB indirme, ~410 MB disk). NOTICE'e türetilmiş veriler ve dbGaP kimlikleri için açık bildirim ve lisans eklenmiş. |
+| **Figür determinizmi** | `make_figures` iki kez, **tüm uyarılar hata sayılarak** (`-W error`) ve her koşu için ayrı matplotlib önbelleğiyle çalıştırıldı: çıkış 0, stderr boş, **12/12 dosya iki koşu arasında ve repodakilerle SHA-256 düzeyinde aynı**. `SOURCE_DATE_EPOCH` boş bırakıldığında da sonuç aynı. |
+| Temiz venv (`requirements.txt` + `requirements-figures.txt`) | `verify_package --run-tests`: **91 passed**, çıkış 0. Bu ortamda üretilen figürler de repodakilerle bayt düzeyinde aynı. |
+| Figür-tablo eşleşmesi | `verify_figure_table_parity` ve Şekil 3'teki `assert`'ler (AUGRC alanları arşivle ≤1e-10, ortalama boyutlar ≤1e-12) her koşuda geçiyor. Görsel inceleme: değerler Tablo 1–4 ile tutarlı. |
+
+**Engellemeyen notlar (INFO):**
+1. **Şekil 3B:** RankConformal etiket kutusu, EqualWidthAUC kutusunun son satırının ("Mean shortlist Regret@1: 130.9") üstüne biniyor. `box_pos["wave_ood"]["RankConformal"]` biraz aşağı alınmalı.
+2. **Şekil 4:** Alt panel harfleri "C1." ve "C2." deney adlarıyla çakışıyor ("C2. C1 Paired ΔRegret@1"). Paneller örneğin A–H olarak harflendirilmeli.
+3. **Şekil 3 başlığı:** x hata çubukları figür betiğinde hesaplanıyor (tohum 2026, 2000 yeniden örnekleme). Başlıkta "arşivlenmiş vektörlerden" yazıyor, bu doğru; tohum ve tekrar sayısı da eklenebilir.
+4. **NOTICE:** `audits/` dizinini bütünüyle CC BY-NC kapsamına alıyor, ama içinde `.py` betikleri var. Bu betikler kod olarak PolyForm kapsamında olmalı; NOTICE'te "audits/*.py → PolyForm" diye ayrılabilir.
+5. `fetch_fimm(max_retries=3)` aslında toplam deneme sayısı; parametre adı `max_attempts` olsa daha açık olur.
+6. `test_generate_all_figures_byte_exact_determinism` repo figürlerini taze üretimle karşılaştırıyor. Sabitlenmiş `matplotlib==3.11.2` dışında bir sürüm kuran biri bu testi düşürür. İsteğe bağlı iyileştirme: sürüm farklıysa yalnız repo karşılaştırmasını atla (`importorskip(..., minversion)` ya da sürüm kontrolü).
+
+#### QA kararı: `QA_PASS (teknik)`
+- Makale sayıları, figür determinizmi, figür-tablo eşleşmesi, `fetch_fimm` yeniden denemesi, temiz ortam (91 test) ve arşiv bütünlüğü doğrulandı.
+- §3.12'deki MAJOR M-1 kapandı.
+- Kalan 6 not kozmetik ya da isteğe bağlı; gönderimi engellemiyor.
+- Bilimsel uygunluk (iddia sınırları, kaynakça içeriği, figürlerin bilimsel doğruluğu) Sol'un; gönderim kararı proje sahibinin.
+- Değişiklikler henüz commit edilmedi; sürüm etiketi bu doğrulanmış duruma atılmalı.
 
 ---
 
